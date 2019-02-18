@@ -9,7 +9,6 @@ class startScreen extends JComponent{
                         start.setVerticalAlignment(JLabel.CENTER);
                         start.setHorizontalAlignment(JLabel.CENTER);
                         start.setSize(m.dx,m.dy);
-                        start.setVisible(true);
                         add(start);
                         
             }

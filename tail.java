@@ -13,7 +13,6 @@ class tail extends JComponent{
                         x = inpx;
                         y = inpy;
                         setSize(m.dx,m.dy);
-                        setVisible(true);
             }
             public void paintComponent(Graphics co){
                         Graphics2D g = (Graphics2D) co;

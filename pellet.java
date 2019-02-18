@@ -10,7 +10,6 @@ class pellet extends JComponent{
             pellet(){
                         setSize(m.dx,m.dy);
                         newRandomLocation();
-                        setVisible(true);
             }
             public void paintComponent(Graphics co){
                         Graphics2D g = (Graphics2D) co;

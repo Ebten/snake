@@ -39,7 +39,6 @@ class s extends JComponent implements Runnable{
                         ytc[0] = y;
                         addTail();
                         setupScoreDisplay();
-                        setVisible(true);
                         start();
             }
             public void paintComponent(Graphics co){
