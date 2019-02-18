@@ -4,7 +4,7 @@ import java.awt.event.*;
 class m extends JFrame implements KeyListener{
             static int scx = 1920, scy = 1080, dx = 800, dy = 800;
             static int sizeOfObjects = 10;
-            boolean started = false;
+            static boolean started = false;
             startScreen sc = new startScreen();
             static JLayeredPane j;
             static pellet p;
@@ -27,6 +27,8 @@ class m extends JFrame implements KeyListener{
                                     started = true;
                                     startSnake();
                                     remove(sc);
+                        }else if(k.getKeyChar() == KeyEvent.VK_ENTER){
+                                    startSnake();
                         }
                         if(k.getKeyChar() == 'w' && snake.spy != 1){
                                     snake.spx = 0;
@@ -47,8 +49,10 @@ class m extends JFrame implements KeyListener{
             }
             void startSnake(){
                         p = new pellet();
-                        j.add(p);
                         snake = new s();
                         j.add(snake);
+                        j.moveToFront(snake);
+                        j.add(p);
+                        j.moveToFront(p);
             }
 }

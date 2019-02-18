@@ -25,20 +25,20 @@ class pellet extends JComponent{
                                     while(newx % 10 != 0){
                                                 newx--;
                                     }
-                                    if(newx >= m.dx - (m.sizeOfObjects * 4)){
-                                                newx = m.dx - (m.sizeOfObjects * 8);
+                                    if(newx >= m.dx - (m.sizeOfObjects * 8)){
+                                                newx = m.dx - (m.sizeOfObjects * 16);
                                     }else if(newx <= 0){
-                                                newx = m.sizeOfObjects * 8;
+                                                newx = m.sizeOfObjects * 16;
                                     }
                         }
                         if(newy % m.sizeOfObjects != 0){
                                     while(newy % 10 != 0){
                                                 newy--;
                                     }
-                                    if(newy >= m.dy - (m.sizeOfObjects * 4)){
-                                                newy = m.dy - (m.sizeOfObjects * 8);
+                                    if(newy >= m.dy - (m.sizeOfObjects * 8)){
+                                                newy = m.dy - (m.sizeOfObjects * 16);
                                     }else if(newy <= 0){
-                                                newy = m.sizeOfObjects * 8;
+                                                newy = m.sizeOfObjects * 16;
                                     }
                         }
                         x = newx;
