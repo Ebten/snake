@@ -20,28 +20,26 @@ class pellet extends JComponent{
             void newRandomLocation(){
                         int newx = r.nextInt(m.dx);
                         int newy = r.nextInt(m.dy);
+                        System.out.println(newx + " | " + newy);
                         if(newx % m.sizeOfObjects != 0){
                                     while(newx % 10 != 0){
                                                 newx--;
-                                    }
-                                    if(newx >= m.dx - (m.sizeOfObjects * 8)){
-                                                newx = m.dx - (m.sizeOfObjects * 16);
-                                    }else if(newx <= 0){
-                                                newx = m.sizeOfObjects * 16;
                                     }
                         }
                         if(newy % m.sizeOfObjects != 0){
                                     while(newy % 10 != 0){
                                                 newy--;
                                     }
-                                    if(newy >= m.dy - (m.sizeOfObjects * 8)){
-                                                newy = m.dy - (m.sizeOfObjects * 16);
-                                    }else if(newy <= 0){
-                                                newy = m.sizeOfObjects * 16;
-                                    }
+                        }
+                        if(newx > m.dx - (m.sizeOfObjects * 16)){
+                                    newx-=(m.sizeOfObjects * 16);
+                        }
+                        if(newy > m.dy - (m.sizeOfObjects * 16)){
+                                    newy-=(m.sizeOfObjects * 16);
                         }
                         x = newx;
                         y = newy;
+                        System.out.println("After Proecessing: " + newx + " | " + newy);
                         repaint();
             }
 }

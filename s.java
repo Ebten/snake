@@ -1,8 +1,9 @@
 package snake;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.geom.*;
-class s extends JComponent implements Runnable{
+class s extends JComponent implements Runnable, KeyListener{
             // This class mainly maintains the tails that are the snake
             // The snake head that was originally imagined to be a seperate object from the tails
             // was changed into being a part of the tail, the first one, and so this class is just a thread
@@ -29,7 +30,8 @@ class s extends JComponent implements Runnable{
             Rectangle2D.Float bkgd = new Rectangle2D.Float(0,0,m.scx,m.scy);
             JLabel score = new JLabel("|" + tailNumber + "|");
             Font f = new Font("Verdana",Font.BOLD,16);
-            s(){
+            pellet tar;
+            s(pellet t){
                         setSize(m.dx, m.dy);
                         for(int i = 0;i<possibleTails;i++){
                                     xtc[i] = 0;
@@ -37,14 +39,12 @@ class s extends JComponent implements Runnable{
                         }
                         xtc[0] = x;
                         ytc[0] = y;
+                        addKeyListener(this);
+                        setFocusable(true);
                         addTail();
                         setupScoreDisplay();
+                        tar = t;
                         start();
-            }
-            public void paintComponent(Graphics co){
-                        g = (Graphics2D) co;
-                        g.setColor(Color.BLACK);
-                        g.fill(bkgd);
             }
             void setupScoreDisplay(){
                         score.setForeground(Color.WHITE);
@@ -100,8 +100,8 @@ class s extends JComponent implements Runnable{
                                     x+= (spx * sisp);
                                     y+= (spy * sisp);
                                     // if the snake head touches a pellet
-                                    if(x == m.p.x && y == m.p.y){
-                                                m.p.newRandomLocation();
+                                    if(x == tar.x && y == tar.y){
+                                                tar.newRandomLocation();
                                                 addTail();
                                     }
                                     // Checking to see if the snake head, or tail[0], is touching any other tails
@@ -126,6 +126,33 @@ class s extends JComponent implements Runnable{
                                     cycleTailValues(x,y);
                                     repaint();
                                     try{t.sleep(threadTime);}catch(Exception e){}
+                        }
+            }
+            public void keyTyped(KeyEvent k){}
+            public void keyReleased(KeyEvent k){}
+            public void keyPressed(KeyEvent k){
+                        if(k.getKeyChar() == KeyEvent.VK_ENTER){
+                                    pellet p = new pellet();
+                                    s s = new s(p);
+                                    m.jf.add(p);
+                                    m.jf.add(s);
+                                    m.jf.remove(this);
+                                    m.jf.remove(tar);
+                        }else if(k.getKeyChar() == 'w' && spy != 1){
+                                   spx = 0;
+                                    spy = -1;
+                        }
+                        if(k.getKeyChar() == 'a' && spx != 1){
+                                    spx = -1;
+                                    spy = 0;
+                        }
+                        if(k.getKeyChar() == 's' && spy != -1){
+                                    spx = 0;
+                                    spy = 1;
+                        }
+                        if(k.getKeyChar() == 'd' && spx != -1){
+                                    spx = 1;
+                                    spy = 0;
                         }
             }
 }
