@@ -28,7 +28,7 @@ class s extends JComponent implements Runnable, KeyListener{
             int x = 40, y = 40, sisp = m.sizeOfObjects, spx = 1, spy = 0;
             Graphics2D g;
             Rectangle2D.Float bkgd = new Rectangle2D.Float(0,0,m.scx,m.scy);
-            JLabel score = new JLabel("|" + tailNumber + "|");
+            JLabel score = new JLabel("" + tailNumber);
             Font f = new Font("Verdana",Font.BOLD,16);
             pellet tar;
             s(pellet t){
@@ -92,7 +92,7 @@ class s extends JComponent implements Runnable, KeyListener{
                         tail[tailNumber] = new tail(xtc[tailNumber],ytc[tailNumber]);
                         add(tail[tailNumber]);
                         tailNumber++;
-                        score.setText("|" + tailNumber + "|");
+                        score.setText("" + tailNumber);
             }
             void start(){if(t == null){t = new Thread(this);t.start();}}
             public void run(){
@@ -110,7 +110,7 @@ class s extends JComponent implements Runnable, KeyListener{
                                                 if(tail[i] != null){
                                                             if(tail[0].x == tail[i].x && tail[0].y == tail[i].y){
                                                                         hold = false;
-                                                                        score.setText("Snake is dead! Press ENTER to restart.");
+                                                                        score.setText("Your final score was " + score + ". Press ENTER to restart.");
                                                                         break;
                                                             }
                                                 }else{
@@ -119,7 +119,7 @@ class s extends JComponent implements Runnable, KeyListener{
                                     }
                                     if(x < 0 || x >= (m.dx - (m.sizeOfObjects * 2)) || y < 0 || y >= (m.dy - (m.sizeOfObjects * 4))){
                                                 hold = false;
-                                                score.setText("Snake is dead! Press ENTER to restart.");
+                                                score.setText("Your final score was " + score.getText() + ". Press ENTER to restart.");
                                                 break;
                                     }
                                     // cycling the tail values

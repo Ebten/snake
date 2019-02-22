@@ -1,7 +1,6 @@
 package snake;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 class m extends JFrame{
             static int scx = 1920, scy = 1080, dx = 800, dy = 800;
             static int sizeOfObjects = 10;
