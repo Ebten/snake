@@ -110,7 +110,7 @@ class s extends JComponent implements Runnable, KeyListener{
                                                 if(tail[i] != null){
                                                             if(tail[0].x == tail[i].x && tail[0].y == tail[i].y){
                                                                         hold = false;
-                                                                        score.setText("Your final score was " + score + ". Press ENTER to restart.");
+                                                                        score.setText("Your final score was " + score.getText() + ". Press ENTER to restart.");
                                                                         break;
                                                             }
                                                 }else{
